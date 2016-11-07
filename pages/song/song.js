@@ -9,16 +9,14 @@ Page({
     wx.request({
       url: 'http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.song.lry&songid=' + options.id,
       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      // header: {}, // 设置请求的 header
       success: function(res){
-        // success
-        console.log(res)
-        if(!res.data.error_code){
+        //console.log(res)
+        if(!res.data.error_code){ //当歌词查询成功
           that.setData({
            songTitle:res.data.title,
            songText:res.data.lrcContent
          })
-        }else{
+        }else{ // 歌词查询出错
           that.setData({
            songTitle:"歌曲信息错误",
            songText:"查询歌词失败"
